@@ -32,10 +32,10 @@ export const IPodWheel = ({ onNavigate, onMenuClick }: IPodWheelProps) => {
       <div className="relative w-[200px] h-[200px] group">
         {/* Outer ring */}
         <div className="absolute inset-0 rounded-full bg-primary shadow-2xl transition-all duration-500 group-hover:shadow-[0_0_60px_rgba(0,0,0,0.5)] group-hover:scale-105" />
-
+        
         {/* Inner circle (center button) */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100px] h-[100px] rounded-full bg-accent transition-all duration-300 group-hover:bg-primary/90" />
-
+        
         {/* Menu text at top */}
         <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10">
           <button
@@ -47,7 +47,7 @@ export const IPodWheel = ({ onNavigate, onMenuClick }: IPodWheelProps) => {
             MENU
           </button>
         </div>
-
+        
         {/* Previous button (left) */}
         <button
           onClick={handlePrev}
@@ -61,7 +61,7 @@ export const IPodWheel = ({ onNavigate, onMenuClick }: IPodWheelProps) => {
             <ChevronLeft className="w-4 h-4 -ml-2" />
           </div>
         </button>
-
+        
         {/* Next button (right) */}
         <button
           onClick={handleNext}
