@@ -64,12 +64,12 @@ export const MediaCarousel = forwardRef<{ navigate: (direction: "prev" | "next")
 
   const getItemPosition = (index: number) => {
     const diff = index - currentIndex;
-    const position = diff * 480;
-    const scale = index === currentIndex ? 1 : 0.65;
+    const position = diff * 380; // tighter spacing to match original
+    const scale = index === currentIndex ? 1 : 0.6;
     const opacity = Math.abs(diff) <= 2 ? 1 : 0;
     const zIndex = index === currentIndex ? 10 : 5 - Math.abs(diff);
-    const blur = index === currentIndex ? 0 : 3;
-    const brightness = index === currentIndex ? 1 : 0.7;
+    const blur = index === currentIndex ? 0 : 4;
+    const brightness = index === currentIndex ? 1 : 0.6;
     
     return {
       transform: `translateX(${position}px) scale(${scale}) translateZ(0)`,
@@ -80,7 +80,7 @@ export const MediaCarousel = forwardRef<{ navigate: (direction: "prev" | "next")
   };
 
   return (
-    <div className="relative w-full h-[550px] flex items-center justify-center overflow-hidden perspective-[1200px]">
+    <div className="relative w-full h-[450px] flex items-center justify-center overflow-hidden perspective-[1200px]">
       <div className="relative w-full h-full flex items-center justify-center">
         {mediaItems.map((item, index) => (
           <div
@@ -95,7 +95,7 @@ export const MediaCarousel = forwardRef<{ navigate: (direction: "prev" | "next")
               }
             }}
           >
-            <div className="w-[420px] h-[420px] bg-card rounded-lg overflow-hidden shadow-2xl border border-border hover:shadow-[0_0_40px_rgba(0,0,0,0.3)] transition-shadow duration-300 group">
+            <div className="w-[320px] h-[320px] bg-card rounded-lg overflow-hidden shadow-2xl border border-border hover:shadow-[0_0_40px_rgba(0,0,0,0.3)] transition-shadow duration-300 group">
               <img 
                 src={item.src} 
                 alt={item.alt}

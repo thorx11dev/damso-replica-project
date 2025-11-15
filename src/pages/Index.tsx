@@ -42,7 +42,7 @@ const Index = () => {
 
       <Navigation />
       
-      <main className="pt-24 pb-32 relative z-10">
+      <main className="pt-20 pb-24 relative z-10">
         <MediaCarousel ref={carouselRef} />
       </main>
 
