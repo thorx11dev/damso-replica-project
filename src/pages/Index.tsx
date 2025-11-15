@@ -1,12 +1,28 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useRef } from "react";
+import { Navigation } from "@/components/Navigation";
+import { MediaCarousel } from "@/components/MediaCarousel";
+import { IPodWheel } from "@/components/IPodWheel";
 
 const Index = () => {
+  const carouselRef = useRef<{ navigate: (direction: "prev" | "next") => void }>(null);
+
+  const handleNavigate = (direction: "prev" | "next") => {
+    carouselRef.current?.navigate(direction);
+  };
+
+  const handleMenuClick = () => {
+    console.log("Menu clicked");
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      
+      <main className="pt-24 pb-32">
+        <MediaCarousel ref={carouselRef} />
+      </main>
+
+      <IPodWheel onNavigate={handleNavigate} onMenuClick={handleMenuClick} />
     </div>
   );
 };
