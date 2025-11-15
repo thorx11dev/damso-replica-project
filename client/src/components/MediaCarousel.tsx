@@ -48,13 +48,13 @@ export const MediaCarousel = forwardRef<{ navigate: (direction: "prev" | "next")
   const navigate = (direction: "prev" | "next") => {
     if (isAnimating) return;
     setIsAnimating(true);
-    
+
     if (direction === "next") {
       setCurrentIndex((prev) => (prev + 1) % mediaItems.length);
     } else {
       setCurrentIndex((prev) => (prev - 1 + mediaItems.length) % mediaItems.length);
     }
-    
+
     setTimeout(() => setIsAnimating(false), 500);
   };
 
@@ -70,7 +70,7 @@ export const MediaCarousel = forwardRef<{ navigate: (direction: "prev" | "next")
     const zIndex = index === currentIndex ? 10 : 5 - Math.abs(diff);
     const blur = index === currentIndex ? 0 : 4;
     const brightness = index === currentIndex ? 1 : 0.6;
-    
+
     return {
       transform: `translateX(${position}px) scale(${scale}) translateZ(0)`,
       opacity,

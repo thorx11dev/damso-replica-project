@@ -28,7 +28,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
       <AnimatedBackground />
-      
+
       {/* Parallax cursor effect */}
       <div 
         className="fixed inset-0 pointer-events-none z-0"
@@ -41,8 +41,8 @@ const Index = () => {
       </div>
 
       <Navigation />
-      
-      <main className="pt-20 pb-24 relative z-10">
+
+      <main className="pt-16 pb-24 relative z-10">
         <MediaCarousel ref={carouselRef} />
       </main>
 
