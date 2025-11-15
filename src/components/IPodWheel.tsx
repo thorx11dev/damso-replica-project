@@ -28,13 +28,13 @@ export const IPodWheel = ({ onNavigate, onMenuClick }: IPodWheelProps) => {
   };
 
   return (
-    <div className="fixed bottom-12 left-1/2 -translate-x-1/2 z-50">
-      <div className="relative w-[220px] h-[220px]">
+    <div className="fixed bottom-12 left-1/2 -translate-x-1/2 z-50 animate-float">
+      <div className="relative w-[220px] h-[220px] group">
         {/* Outer ring */}
-        <div className="absolute inset-0 rounded-full bg-primary shadow-2xl" />
+        <div className="absolute inset-0 rounded-full bg-primary shadow-2xl transition-all duration-500 group-hover:shadow-[0_0_60px_rgba(0,0,0,0.5)] group-hover:scale-105" />
         
         {/* Inner circle (center button) */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110px] h-[110px] rounded-full bg-accent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110px] h-[110px] rounded-full bg-accent transition-all duration-300 group-hover:bg-primary/90" />
         
         {/* Menu text at top */}
         <div className="absolute top-7 left-1/2 -translate-x-1/2 z-10">
@@ -51,7 +51,7 @@ export const IPodWheel = ({ onNavigate, onMenuClick }: IPodWheelProps) => {
         {/* Previous button (left) */}
         <button
           onClick={handlePrev}
-          className={`absolute left-5 top-1/2 -translate-y-1/2 z-10 text-primary-foreground transition-all duration-200 ${
+          className={`absolute left-5 top-1/2 -translate-y-1/2 z-10 text-primary-foreground transition-all duration-300 hover:scale-110 ${
             activeButton === "prev" ? "scale-90 opacity-70" : ""
           }`}
           aria-label="Previous"
@@ -65,7 +65,7 @@ export const IPodWheel = ({ onNavigate, onMenuClick }: IPodWheelProps) => {
         {/* Next button (right) */}
         <button
           onClick={handleNext}
-          className={`absolute right-5 top-1/2 -translate-y-1/2 z-10 text-primary-foreground transition-all duration-200 ${
+          className={`absolute right-5 top-1/2 -translate-y-1/2 z-10 text-primary-foreground transition-all duration-300 hover:scale-110 ${
             activeButton === "next" ? "scale-90 opacity-70" : ""
           }`}
           aria-label="Next"
