@@ -64,39 +64,42 @@ export const MediaCarousel = forwardRef<{ navigate: (direction: "prev" | "next")
 
   const getItemPosition = (index: number) => {
     const diff = index - currentIndex;
-    const position = diff * 480; // increased spacing to match original
+    const position = diff * 480;
     const scale = index === currentIndex ? 1 : 0.65;
     const opacity = Math.abs(diff) <= 2 ? 1 : 0;
     const zIndex = index === currentIndex ? 10 : 5 - Math.abs(diff);
+    const blur = index === currentIndex ? 0 : 3;
+    const brightness = index === currentIndex ? 1 : 0.7;
     
     return {
-      transform: `translateX(${position}px) scale(${scale})`,
+      transform: `translateX(${position}px) scale(${scale}) translateZ(0)`,
       opacity,
-      zIndex
+      zIndex,
+      filter: `blur(${blur}px) brightness(${brightness})`
     };
   };
 
   return (
-    <div className="relative w-full h-[550px] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-[550px] flex items-center justify-center overflow-hidden perspective-[1200px]">
       <div className="relative w-full h-full flex items-center justify-center">
         {mediaItems.map((item, index) => (
           <div
             key={item.id}
-            className="absolute transition-all duration-500 ease-out cursor-pointer"
+            className="absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] cursor-pointer will-change-transform"
             style={getItemPosition(index)}
             onClick={() => {
               if (index !== currentIndex && !isAnimating) {
                 setIsAnimating(true);
                 setCurrentIndex(index);
-                setTimeout(() => setIsAnimating(false), 500);
+                setTimeout(() => setIsAnimating(false), 700);
               }
             }}
           >
-            <div className="w-[420px] h-[420px] bg-card rounded-lg overflow-hidden shadow-2xl border border-border">
+            <div className="w-[420px] h-[420px] bg-card rounded-lg overflow-hidden shadow-2xl border border-border hover:shadow-[0_0_40px_rgba(0,0,0,0.3)] transition-shadow duration-300 group">
               <img 
                 src={item.src} 
                 alt={item.alt}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
             </div>
           </div>
