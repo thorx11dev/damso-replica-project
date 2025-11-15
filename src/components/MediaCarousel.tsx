@@ -64,8 +64,8 @@ export const MediaCarousel = forwardRef<{ navigate: (direction: "prev" | "next")
 
   const getItemPosition = (index: number) => {
     const diff = index - currentIndex;
-    const position = diff * 420; // spacing between items
-    const scale = index === currentIndex ? 1 : 0.7;
+    const position = diff * 480; // increased spacing to match original
+    const scale = index === currentIndex ? 1 : 0.65;
     const opacity = Math.abs(diff) <= 2 ? 1 : 0;
     const zIndex = index === currentIndex ? 10 : 5 - Math.abs(diff);
     
@@ -77,7 +77,7 @@ export const MediaCarousel = forwardRef<{ navigate: (direction: "prev" | "next")
   };
 
   return (
-    <div className="relative w-full h-[500px] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-[550px] flex items-center justify-center overflow-hidden">
       <div className="relative w-full h-full flex items-center justify-center">
         {mediaItems.map((item, index) => (
           <div
@@ -92,7 +92,7 @@ export const MediaCarousel = forwardRef<{ navigate: (direction: "prev" | "next")
               }
             }}
           >
-            <div className="w-[350px] h-[350px] bg-card rounded-lg overflow-hidden shadow-2xl border border-border">
+            <div className="w-[420px] h-[420px] bg-card rounded-lg overflow-hidden shadow-2xl border border-border">
               <img 
                 src={item.src} 
                 alt={item.alt}
